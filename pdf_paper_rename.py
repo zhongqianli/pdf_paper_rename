@@ -40,20 +40,20 @@ def pdf_paper_rename(filename, output_dir, paper_type="arxiv"):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_dir", type=str, default="./data", help="path to pdf data dir")
-    parser.add_argument("--output_dir", type=str, default="./output", help="path to output dir")
-    parser.add_argument("--is_arxiv", action="store_true", help="is arxiv pdf paper")
+    parser.add_argument("--data", type=str, help="path to pdf data dir")
+    parser.add_argument("--output", type=str, help="path to output dir")
+    parser.add_argument("--not_arxiv", action="store_true", help="not arxiv pdf paper")
     args = parser.parse_args()
 
-    root_dir = args.data_dir
-    output_dir = args.output_dir
+    root_dir = args.data
+    output_dir = args.output
 
     os.makedirs(output_dir, exist_ok=True)
 
-    if args.is_arxiv:
-        paper_type = "arxiv"
-    else:
+    if args.not_arxiv:
         paper_type = None
+    else:
+        paper_type = "arxiv"
 
     filename_list = foreach_files(root_dir)
     for filename in filename_list:
