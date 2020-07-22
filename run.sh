@@ -1,0 +1,1 @@
+python3 pdf_paper_rename.py --data_dir ./data --output_dir ./output --is_arxiv
